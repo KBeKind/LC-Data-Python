@@ -212,3 +212,132 @@ for char in text[::-1]:
 print(f"{text} | {reversedWord}")
 
 
+# ---- String Methods and Data Types ----
+
+num = 1001
+
+# Throws an error:
+print(len(str(num)))
+
+# 1. Use type conversion to print the length (number of digits) of an integer.
+
+print(len(str(num)))
+
+# 2. Print the length of 'num'
+
+# 3. Print the number of digits in a FLOAT value (e.g. num = 123.45 has 5 digits but a length of 6).
+num = 1001.1
+
+strNum = str(num)
+
+numberOfDigits = 0
+
+for char in strNum:
+    if char in string.digits:
+        numberOfDigits += 1
+
+print(numberOfDigits)
+
+# 4. Experiment! What if num could be EITHER an integer or a decimal?  Add an if/else statement so your code can handle both cases.
+
+num = 123.45
+new_num = str(num).replace(".", "")
+print(len(new_num))
+
+if '.' in str(num):
+   print(len(str(num)) - 1)
+else:
+   print(len(str(num)))
+
+
+# ---- Loops, Conditionals, and Strings! ----
+
+word = 'bag'
+
+# 1. Set up a loop to iterate through the string of lowercase vowels, 'aeiou'.
+
+
+
+# 2 & 3. Inside the loop, create and print a new string from 'word', but with a different vowel. Use the replace() method.
+
+vowels = 'aeiou'
+for char in vowels:
+    print(word.replace("a", char))
+
+
+print("*****************************")
+# 4. After you have your code working, try other words besides 'bag'.
+word = "testing"
+
+for char in vowels:
+    for aChar in word:
+        if aChar in vowels:
+            word = word.replace(aChar, char)
+    print(word)
+
+
+
+# ---- Method Chaining Fun with DNA ----
+
+dna = " TCG-TAC-gaC-TAC-CGT-CAG-ACT-TAa-CcA-GTC-cAt-AGA-GCT    "
+
+# First, print out the dna strand in it's current state.
+print(dna)
+
+# 1. Use the strip() method to remove the leading and trailing whitespace, then print the result.
+
+dna = dna.strip()
+
+print(dna)
+
+# 2. Change all of the letters in the dna string to UPPERCASE, then print the result.
+
+dna = dna.upper()
+print(dna)
+
+# 3. Note that after applying the methods above, the original, flawed string is still stored in dna. To fix this, we need to reassign the changes to back to dna.
+# Apply these fixes to your code so that print(dna) shows the DNA strand in UPPERCASE with no whitespace.
+print(dna)
+
+# 4 a. Use replace() to remove the gene 'GCT', then print the altered strand. Don’t forget about the extra hyphen!
+
+dna = dna.replace("-GCT", "")
+
+print(dna)
+
+# 4 b. Look for the gene 'CAT' with find(). If found print, 'CAT gene found', otherwise print, 'CAT gene NOT found'.
+
+result = dna.find("CAT")
+
+if result == -1:
+    print("CAT gene NOT found.")
+else:
+    print("CAT gene found")
+
+dnaCount = dna.count("-") + 1
+charCount = len(dna)
+
+print(f"The DNA string is {charCount} characters long and contains {dnaCount} genes")
+
+
+
+# ---- Debugging Practice ----
+
+# 1.  Assign your favorite number and word to the two variables.
+my_num = 101
+my_word = 'cool'
+
+# a) Use format() and index values to print the string, "Here is my number: ___, and here is my word: ___, and here is my number again: ___."
+
+print("Here is my number: {0}, and here is my word: {1}, and here is my number again: {0}.".format(my_num, my_word))
+
+# b) Print the string, "Here is my word 3 times: ___/___/___, and here is my number squared: ___."
+
+print("Here is my word 3 times: {0}/{0}/{0}, and here is my number squared: {1}.".format(my_word, my_num**2 ))
+
+
+advice = "Don't Panic"
+
+output = "The text, '{0}' contains {1} characters."
+
+print(output.format(advice, len(advice)))

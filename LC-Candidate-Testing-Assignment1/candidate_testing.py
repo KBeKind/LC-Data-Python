@@ -4,10 +4,10 @@
 question = "Who was the first American woman in space? "
 correct_answer = "Sally Ride"
 candidate_answer = ""
-questions = ""
-correct_answers = ""
-candidate_answers = ""
-
+questions = ["Who was the first American woman in space?", "True or false: 5 kilometer == 5000 meters?", "(5 + 3)/2 * 10 = ?", "Given the list [8, 'Orbit', 'Trajectory', 45], what entry is at index 2?", "What is the minimum crew size for the ISS?" ]
+correct_answers = ["Sally Ride", "true", "40", "Trajectory", "3"]
+candidate_answers = []
+candidate_score = []
 
 def ask_for_name():
     # TODO 1.1: Ask for candidate's name
@@ -17,20 +17,26 @@ def ask_for_name():
 
 def ask_question():
     # TODO 1.2b: Ask candidate the question and assign the response as candidate_answer
-    print(question)
-    a_candidate_answer = input("Your answer: ")
 
-    return a_candidate_answer
+    for aQuestion in questions:
+        print(aQuestion)
+        candidate_answers.append(input("Your answer: "))
+
+    return candidate_answers
 
 
-def grade_quiz(a_candidate_answers):
+def grade_quiz():
     # TODO 1.2c: Let the candidate know if they have answered the question correctly or incorrectly
-    grade = ""
-    if a_candidate_answers == correct_answer:
-        grade = "correct"
-    else:
-        grade = "incorrect"
-    return grade
+    score = 0
+
+    for i in range(0, len(correct_answers), 1):
+        if candidate_answers[i].lower() == correct_answers[i].lower():
+            score += 1
+            candidate_score.append(1)
+        else:
+            candidate_score.append(0)
+
+    return score
 
 
 def run_program():
@@ -38,9 +44,18 @@ def run_program():
     # TODO 1.1b: Ask for candidate's name and greet them by their name
     print("Hello", candidate_name)
 
-    candidate_answers = ask_question()
-    print(grade_quiz(candidate_answers))
+    ask_question()
 
+    candidate_total = grade_quiz()
+
+    print(f"Your total score is {candidate_total} out of {len(correct_answers)}")
+
+    print(f"Your correct answer percentage is {(candidate_total/len(correct_answers)) * 100 }%")
+
+    if candidate_total >= 4:
+        print(f"You have PASSED!!!")
+    else:
+        print(f"You have FAILED!!!")
 
 
 run_program()

@@ -48,6 +48,10 @@ def run_program():
 
     candidate_total = grade_quiz()
 
+    for i in range(0, len(correct_answers), 1):
+        print(f"{i+1}) {questions[i]} \n Your Answer: {candidate_answers[i]} \n Correct Answer: {correct_answers[i]}")
+
+
     print(f"Your total score is {candidate_total} out of {len(correct_answers)}")
 
     print(f"Your correct answer percentage is {(candidate_total/len(correct_answers)) * 100 }%")

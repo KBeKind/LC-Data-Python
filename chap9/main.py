@@ -362,3 +362,41 @@ table.append(["list level 2",["list level 3", "another level 3"]])
 
 print(table)
 print(table[3][1][1])
+
+
+my_string = "LaunchCode"
+
+
+# a) Use string methods to remove the first three characters from the string and add them to the end.
+
+firstLetters = my_string[0:3]
+a_new_string = my_string.replace(firstLetters,"",)
+a_new_string += firstLetters.lower()
+a_new_string = a_new_string.capitalize()
+# Use a template literal to print the original and modified string in a descriptive phrase.
+
+print(f"the original string: {my_string}.  pig latin string: {a_new_string}")
+
+# b) Modify your code to accept user input. Query the user to enter the number of letters that will be relocated.
+
+num_of_letters = 0
+need_input = True
+while(need_input):
+
+    num_of_letters = input("Give me a number of letters to be relocated:")
+    if int(num_of_letters) >= len(my_string):
+        need_input = True
+        print(f"that number is too large the word is {len(my_string)} characters long")
+    else:
+        need_input = False
+
+
+# c) Add validation to your code to deal with user inputs that are longer than the word. In such cases, default to moving 3 characters. Also, the template literal should note the error.
+
+my_string = "LaunchCode"
+
+firstLetters = my_string[0:int(num_of_letters)]
+a_new_string = my_string.replace(firstLetters,"",)
+a_new_string += firstLetters.lower()
+a_new_string = a_new_string.capitalize()
+print(f"the original string: {my_string}.  pig latin string: {a_new_string}")

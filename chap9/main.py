@@ -374,29 +374,85 @@ a_new_string = my_string.replace(firstLetters,"",)
 a_new_string += firstLetters.lower()
 a_new_string = a_new_string.capitalize()
 # Use a template literal to print the original and modified string in a descriptive phrase.
-
-print(f"the original string: {my_string}.  pig latin string: {a_new_string}")
+#
+# print(f"the original string: {my_string}.  pig latin string: {a_new_string}")
 
 # b) Modify your code to accept user input. Query the user to enter the number of letters that will be relocated.
 
 num_of_letters = 0
 need_input = True
-while(need_input):
+# while(need_input):
 
-    num_of_letters = input("Give me a number of letters to be relocated:")
-    if int(num_of_letters) >= len(my_string):
-        need_input = True
-        print(f"that number is too large the word is {len(my_string)} characters long")
-    else:
-        need_input = False
+    # num_of_letters = input("Give me a number of letters to be relocated:")
+    # if int(num_of_letters) >= len(my_string):
+    #     need_input = True
+    #     print(f"that number is too large the word is {len(my_string)} characters long")
+    # else:
+    #     need_input = False
 
 
 # c) Add validation to your code to deal with user inputs that are longer than the word. In such cases, default to moving 3 characters. Also, the template literal should note the error.
 
-my_string = "LaunchCode"
+# my_string = "LaunchCode"
+#
+# firstLetters = my_string[0:int(num_of_letters)]
+# a_new_string = my_string.replace(firstLetters,"",)
+# a_new_string += firstLetters.lower()
+# a_new_string = a_new_string.capitalize()
+# print(f"the original string: {my_string}.  pig latin string: {a_new_string}")
 
-firstLetters = my_string[0:int(num_of_letters)]
-a_new_string = my_string.replace(firstLetters,"",)
-a_new_string += firstLetters.lower()
-a_new_string = a_new_string.capitalize()
-print(f"the original string: {my_string}.  pig latin string: {a_new_string}")
+
+proto_list1 = "3,6,9,12"
+proto_list2 = "A;C;M;E"
+proto_list3 = "space delimited string"
+proto_list4 = "Comma-spaces, might, require, typing, caution"
+
+strings = [proto_list1, proto_list2, proto_list3, proto_list4]
+
+# a) Use the 'in' method to check to see if the words in each string are separated by commas (,), semicolons (;) or just spaces.
+print("test")
+print(strings)
+for a_string in strings:
+    if ", " in a_string:
+        a_list = a_string.split(", ")
+        a_list.reverse()
+        a_string = ", ".join(a_list)
+        print(a_string)
+
+    elif "," in a_string:
+        a_list = a_string.split(",")
+        a_list.reverse()
+        a_string = ",".join(a_list)
+        print(a_string)
+
+    elif " " in a_string:
+        a_list = a_string.split(" ")
+        a_list.reverse()
+        a_string = " ".join(a_list)
+        print(a_string)
+
+    elif ";" in a_string:
+        a_list = a_string.split(";")
+        a_list.reverse()
+        a_string = ";".join(a_list)
+        print(a_string)
+    else:
+        print("String has none")
+
+
+
+
+
+# b) If the string uses commas to separate the words, split it into an array, reverse the entries, and then join the array into a new comma separated string.
+
+
+
+# c) If the string uses semicolons to separate the words, split it into an array, alphabetize the entries, and then join the array into a new comma separated string.
+
+
+
+# d) If the string uses spaces to separate the words, split it into an array, reverse alphabetize the entries, and then join the array into a new space separated string.
+
+
+
+# e) If the string uses ‘comma spaces’ to separate the list, modify your code to produce the same result as part “b”, making sure that the extra spaces are NOT part of the final string.

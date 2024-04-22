@@ -439,20 +439,49 @@ for a_string in strings:
     else:
         print("String has none")
 
-
-
-
-
 # b) If the string uses commas to separate the words, split it into an array, reverse the entries, and then join the array into a new comma separated string.
-
-
 
 # c) If the string uses semicolons to separate the words, split it into an array, alphabetize the entries, and then join the array into a new comma separated string.
 
-
-
 # d) If the string uses spaces to separate the words, split it into an array, reverse alphabetize the entries, and then join the array into a new space separated string.
 
-
-
 # e) If the string uses ‘comma spaces’ to separate the list, modify your code to produce the same result as part “b”, making sure that the extra spaces are NOT part of the final string.
+
+
+food = "water bottles,meal packs,snacks,chocolate"
+equipment = "space suits,jet packs,tool belts,thermal detonators"
+pets = "parrots,cats,moose,alien eggs"
+sleep_aids = "blankets,pillows,eyepatches,alarm clocks"
+
+# a) Use split to convert the strings into four cabinet lists. Alphabetize the contents of each cabinet.
+
+food_list = food.split(",")
+equipment_list = equipment.split(",")
+pets_list = pets.split(",")
+sleep_aids_list = sleep_aids.split(",")
+
+# b) Initialize a cargo_hold list and add the cabinet lists to it. Print cargo_hold to verify its structure.
+
+cargo_hold = [food_list, equipment_list, pets_list, sleep_aids_list]
+
+print(cargo_hold)
+
+# c) Query the user to select a cabinet (0 - 3) in the cargo_hold.
+
+user_selection = input("Select your cargo hold 0-3:")
+valid_selections = ["0", "1", "2", "3"]
+# d) Use bracket notation and format to display the contents of the selected cabinet. If the user entered an invalid number, print an error message.
+while user_selection not in valid_selections:
+    print("invalid selection")
+    user_selection = input("Select your cargo hold 0-3:")
+
+print(cargo_hold[int(user_selection)])
+
+user_item_selection = input("provide an item for me to check for:")
+
+if user_item_selection in cargo_hold[int(user_selection)]:
+    print(f"Cabinet {user_selection} DOES contain {user_item_selection}.")
+else:
+    print(f"Cabinet {user_selection} DOES NOT contain {user_item_selection}.")
+
+# e) Modify the code to query the user for BOTH a cabinet in cargo_hold AND a particular item. Use the in method to check if the cabinet contains the selected item, then print “Cabinet ____ DOES/DOES NOT contain ____.”

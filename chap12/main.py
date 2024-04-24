@@ -1,3 +1,6 @@
+import random
+import string
+
 student = {
   'name' : 'Maria',
   'id_number' : 1234,
@@ -172,25 +175,132 @@ phone_book = {
    'Gordon' : '555-5299',
    'James' : '555-5837'
 }
+#
+# name = input("Enter a name: ").lower().capitalize()
+#
+# if name in phone_book.keys():
+#     print(f"The number for {name} is {phone_book[name]}.")
+# else:
+#     print(f"{name} is not in the phone book")
+#     answer = input(f"Would you like to add {name} to the phone book? 'Y' or 'N'")
+#     if answer.upper() == "Y":
+#         new_phone_number = input(f"Please provide {name}'s phone number: ")
+#         phone_book[name] = new_phone_number
+#         print(f"{name} was added with the number: {new_phone_number}")
+#     else:
+#         print(f"We will not add {name} to the phone book.")
+#
+# ph_number = input("Enter a phone number: ")
+# if ph_number not in phone_book.values():
+#     print(f"{ph_number} is not in the phone book")
+# else:
+#     for (key, value) in phone_book.items():
+#         if value == ph_number:
+#             print(f"Dialing {ph_number} will call {key}.")
+#
+#
 
-name = input("Enter a name: ").lower().capitalize()
+print("*****************************")
 
-if name in phone_book.keys():
-    print(f"The number for {name} is {phone_book[name]}.")
-else:
-    print(f"{name} is not in the phone book")
-    answer = input(f"Would you like to add {name} to the phone book? 'Y' or 'N'")
-    if answer.upper() == "Y":
-        new_phone_number = input(f"Please provide {name}'s phone number: ")
-        phone_book[name] = new_phone_number
-        print(f"{name} was added with the number: {new_phone_number}")
+
+
+pass
+
+# Write your fanciest_flavor function here:
+
+
+def main():
+  flavors = {
+    'chocolate' : 0.35,
+    'vanilla' : 0.35,
+    'strawberry' : 0.42,
+    'cookies and cream' : 0.45,
+    'mint chocolate chip' : 0.42,
+    'fudge chunk' : 0.45,
+    'saffron' : 2.25,
+    'garlic' : 0.05
+  }
+
+  choice = 'fudge chunk'
+  price = return_cost(flavors, choice)
+  if price == 0:
+    print("Sorry, we don't have {0}.".format(choice))
+  else:
+    print(f"The price for {choice} is ${price} per scoop.")
+
+  print('---')
+
+  expensive_flavor = fanciest_flavor(flavors)
+
+  print(f"The most expensive flavor we have is {expensive_flavor}.")
+
+def return_cost(a_dictionary, flavor_choice):
+    if flavor_choice in a_dictionary.keys():
+        return a_dictionary[flavor_choice]
     else:
-        print(f"We will not add {name} to the phone book.")
+        return 0
 
-ph_number = input("Enter a phone number: ")
-if ph_number not in phone_book.values():
-    print(f"{ph_number} is not in the phone book")
-else:
-    for (key, value) in phone_book.items():
-        if value == ph_number:
-            print(f"Dialing {ph_number} will call {key}.")
+def fanciest_flavor(a_dictionary):
+    maximum_price = max(a_dictionary.values())
+    for (key, value) in a_dictionary.items():
+        if value == maximum_price:
+            return key
+    return 0
+
+# main()
+
+print("******************************")
+
+
+
+# Code your assign_tickets function here:
+
+
+# Code the fix_tickets function here:
+
+
+def main():
+    names = ['Caleb', 'Naomi', 'Owen', 'Ava', 'Aaron', 'Lydia']
+    ticket_holders = assign_tickets(names)
+    print(ticket_holders)
+    fix_tickets(ticket_holders)
+
+    return ticket_holders
+
+def assign_tickets(names_list):
+    names_dict = {}
+    for a_name in names_list:
+        names_dict[a_name] = random.randrange(100, 500)
+    return names_dict
+
+def fix_tickets(ticket_holders_dict):
+    for (key, value) in ticket_holders_dict.items():
+        if(value <= 199):
+            ticket_holders_dict[key] = value + 500
+
+# print(main())
+
+print("***********************")
+
+def main():
+    text = "Python ROCKS!"
+    results = character_count(text)
+    print(f"The character counts for {text} is:")
+
+    key_list = list(results.keys())
+    key_list.sort()
+
+    for (key) in key_list:
+        if key in string.ascii_letters:
+            print(f"{key}: {results[key]}")
+
+def character_count(a_string):
+    counts = {}
+    for a_char in a_string:
+        if a_char.upper() not in counts.keys():
+            counts[a_char.upper()] = 1
+        else:
+            counts[a_char.upper()] += 1
+    return counts
+
+main()

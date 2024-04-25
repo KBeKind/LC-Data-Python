@@ -303,4 +303,54 @@ def character_count(a_string):
             counts[a_char.upper()] += 1
     return counts
 
+# main()
+
+print("***********************")
+
+
+
+def create_madlib_dict(mlib_string):
+    words = mlib_string.split()  # Split string into a list of words.
+    print(words)
+    new_dict = {}
+
+    for a_word in words:
+        if "_" in a_word:
+            madLibWord = a_word[1:a_word.find("/")]
+            new_dict[madLibWord] = ""
+    print(new_dict)
+    return new_dict
+
+
+def prompt_user_for_words(mad_lib_dict):
+    answers_dict = mad_lib_dict.copy()  # Make an independent copy of the dictionary.
+    print("test")
+    for key in answers_dict.keys():
+        answers_dict[key] = input(f"Give us a {key[0: len(key) - 1]}: ")
+    return answers_dict
+
+
+def create_output(ml_dict, text):
+    new_text = text  # Assign the starting value to new_text.
+    new_text_list = new_text.split()
+    print(new_text_list)
+    for i in range(0, len(new_text_list)):
+        if "_" in new_text_list[i]:
+            for (key, value) in ml_dict.items():
+                if key in new_text_list[i]:
+                    new_text_list[i] = value
+
+    new_text = " ".join(new_text_list)
+    return new_text
+
+
+def main():
+    mad_lib = "The _adj1/ person _verb1/ to the _noun1/"
+
+    mlib_dict = create_madlib_dict(mad_lib)
+    user_responses = prompt_user_for_words(mlib_dict)
+    print(user_responses)
+    output = create_output(user_responses, mad_lib)
+    print(output)
+
 main()

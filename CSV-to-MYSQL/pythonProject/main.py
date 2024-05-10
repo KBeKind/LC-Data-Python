@@ -12,11 +12,7 @@ engine = create_engine(f'mysql+pymysql://{username}:{password}@{host}:{port}/{da
 
 
 csv_files = {
-    'data-to-import/books.csv': 'books',
-    'data-to-import/book_tags.csv': 'book_tags',
-    'data-to-import/ratings.csv': 'ratings',
-    'data-to-import/tags.csv': 'tags',
-    'data-to-import/to_read.csv': 'to_read',
+    'data-to-import/other-Lyft_B02510.csv': 'other_Lyft',
 
 }
 
